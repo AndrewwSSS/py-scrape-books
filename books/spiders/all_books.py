@@ -16,7 +16,7 @@ class AllBooksSpider(scrapy.Spider):
     def parse(self, response: Response, **kwargs):
         for book in response.css(".product_pod"):
             yield response.follow(
-                f"{self.BASE_URL}{book.css("h3 > a::attr(href)").get()}",
+                f"{self.BASE_URL}{book.css('h3 > a::attr(href)').get()}",
                 self.parse_detailed
             )
 
